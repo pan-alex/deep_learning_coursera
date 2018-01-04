@@ -2,6 +2,7 @@
 
 import h5py
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def load_dataset():
@@ -91,6 +92,7 @@ def relu(z):
 
 def relu_backward(dA, cache_z):
     """
+    Provided in the course
     Implement the backward propagation for a single RELU unit.
     Arguments:
     dA -- post-activation gradient, of any shape
@@ -109,6 +111,7 @@ def relu_backward(dA, cache_z):
 
 def sigmoid_backward(dA, cache_z):
     """
+    Provided in the course
     Implement the backward propagation for a single SIGMOID unit.
     Arguments:
     dA -- post-activation gradient, of any shape
@@ -126,3 +129,20 @@ def sigmoid_backward(dA, cache_z):
     assert (dZ.shape == Z.shape)
     return dZ
 
+
+def show_image(data, Y, index=None,):
+    """
+    Plots an image and prints whether it is a cat image or not. Default
+    arguments rely on data that are loaded-in in main.py
+    :param data: Array of raw RBG image data to plot
+    :param index: Which image to plot
+    :param Y: Ground truth label
+    :return: None
+    """
+    if index == None:
+        index = np.random.randint(0, len(data))
+    plt.imshow(data[index])
+
+    if Y.squeeze()[index] == 1: is_cat = "a cat"
+    else: is_cat = "not a cat"
+    print("Image " + str(index) + ". It's " + is_cat + " picture.")
