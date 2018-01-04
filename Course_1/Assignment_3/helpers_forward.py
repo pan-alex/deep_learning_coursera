@@ -85,8 +85,9 @@ def forward_model(X, parameters):
     return A, caches_z, caches_Aprev_W_b
 
 
-def cost(AL, Y):
+def cross_entropy_cost(AL, Y):
     """
+    Provided in the course
     Implement the cost function
 
     :param AL: Probability vector corresponding to label predictions -
@@ -98,7 +99,7 @@ def cost(AL, Y):
     :returns: cost -- cross-entropy cost
     """
     m = Y.shape[1]
-    cost = -1. / m * np.sum(Y * np.log(AL) + (1 - Y) * np.log(1 - AL))
+    cost = -(1. / m * np.sum(Y * np.log(AL) + (1 - Y) * np.log(1 - AL)))
 
     # Make sure shape is what we expect (e.g., turns [[17]] into 17).
     cost = np.squeeze(cost)
