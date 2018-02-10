@@ -53,6 +53,9 @@ def initialize_parameters(dims):
         * parameters: a dictionary containing all parameters "W1", "b1" ... "WL", "BL"
         * Wl: the weight matrix of shape (layer_dims[1], layer_dims[l-1]
         * b1: a bias vector of shape (layer_dims[1], 1)
+		
+	parameters is organized such that each layer is a key corresponding to another
+	dict, which has the keys 'W' and 'b'. E.g. parameters[l][W] = `Wl`
     """
     parameters = {}
 

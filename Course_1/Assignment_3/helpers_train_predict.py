@@ -20,8 +20,8 @@ def nn_train(X, Y, model_dims=[7], alpha=0.01, iterations=1000, compute_cost=Fal
 
     :param model_dims: array or list, where each element corresponds to the
      number of nodes in a hidden unit. The length of model_dims is the number
-     of HIDDEN units in the model (ignoring the input layer and the output
-     layer). Examples:
+     of HIDDEN units in the model. The output layer size is always 1. The input
+	 layer will automatically adopt the size of the input vector. Examples:
 
      * [3, 4] -- 2 hidden units; layer 1 has 3 nodes and layer 2 has 4 nodes
 

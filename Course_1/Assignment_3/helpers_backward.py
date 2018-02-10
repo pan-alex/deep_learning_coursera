@@ -59,17 +59,23 @@ def backward_linear_activation(dA, A_prev, W, Z, activation='relu'):
 
 def backward_model(AL, Y, caches_z, caches_Aprev_W_b,):
     """
-    Given AL, the predictions for the model (output of forward_model) and Y, the
-    true class labels, computes the gradient of the cost function, dA[L].
-    dA[L] is fed into backward_linear_activation to compute the remaining
+    Given: 
+	* AL, the predictions for the model (output of forward_model)
+	* Y, the true class labels
+	backward_model computes the gradient of the cost function, dA[L].
+    
+	dA[L] is fed into backward_linear_activation to compute the remaining
     gradients, where layer [L] uses a sigmoid activation function, and [L-1] to
     1 use ReLU.
 
-    :param AL: A[L], with dimensions 1 X m
+    :param AL: A[L], with dimensions 1 * m
+	
     :param Y: Y a vector containing the true labels (m-dimensional)
-    :param caches_z: Dictionary of length L containing all of Z[1],..., Z[L]
+    
+	:param caches_z: Dictionary of length L containing all of Z[1],..., Z[L]
       computed in forward propagation
-    :param caches_Aprev_W_b: Dictionary containing all of A_prev, W, and b
+  
+	:param caches_Aprev_W_b: Dictionary containing all of A_prev, W, and b
       for layers 1,..., L. Note that caches_Aprev_W_b[1] will return A[0], W[1],
       and b[1]
 
@@ -81,11 +87,10 @@ def backward_model(AL, Y, caches_z, caches_Aprev_W_b,):
     m = AL.shape[1]
     Y = Y.reshape(AL.shape)    # Ensure that Y is an ndarray with same dims as AL
 
-    dAL = -(np.divide(Y, AL) - np.divide(1 - Y, 1 - AL))
-
-    # Backprop for layer L
-    # dAL is the derivative of cost wrt to AL (dJ/dAL)    dAL = -(np.divide(Y, AL) - np.divide(1 - Y, 1 - AL))
-
+	# Backprop for layer L
+    # dAL is the derivative of cost wrt to AL (dJ/dAL)    
+	dAL = -(np.divide(Y, AL) - np.divide(1 - Y, 1 - AL))
+    	
     # Note: caches_Aprev_W_b[L]["W"] is W[L]; caches_Aprev_W_b[L]['A_prev'] is A[L-1]
     grads[L] = backward_linear_activation(dAL,
                                           caches_Aprev_W_b[L]['A_prev'],

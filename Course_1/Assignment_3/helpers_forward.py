@@ -2,6 +2,9 @@ from Assignment_3.helpers import *
 
 def forward_linear(A_prev, W, b):
     """
+	Given the parameters A_prev (A[l-1]), W (W[l]), and b (b[l]), computes the
+	linear combination of the parameters (Z).
+	
     :param A_prev: Matrix of activation values from the previous layer with
       dimensions n^[l-1] * m. In the first layer, A = X.
 
@@ -20,6 +23,13 @@ def forward_linear(A_prev, W, b):
 
 def forward_linear_activation(A_prev, W, b, activation='relu'):
     """
+	Wrapper around linear_forward. In step 1: takes the parameters 
+	A_prev (A[l-1]), W (W[l]), and b (b[l]), computes the linear 
+	combination of the parameters (Z). In step 2: computes the
+	activation function (relu or sigmoid).
+	
+	
+	
     :param A_prev: Matrix of activation values from the previous layer with
       dimensions n^[l-1] * m. In the first layer, A = X.
 
@@ -43,7 +53,9 @@ def forward_linear_activation(A_prev, W, b, activation='relu'):
 
 def forward_model(X, parameters):
     """
-     Computes forward propagation.
+     Wraps around linear_activation_forward to compute all steps of forward 
+	propagation. It is essentially wraps linear_activation_forward in a for
+	loop.
 
     :param X: The input vector with length n_x * 1
 
